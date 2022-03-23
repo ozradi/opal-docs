@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 slug: /
-title: Welcome to OPAL.ac
+title: Welcome to OPAL
 ---
 
 ## Background
@@ -14,40 +14,53 @@ And don't get us wrong - we planned the architecture beforehand, and asked all s
 Unfortunately, there is always a stage that the requirements changes and we are left with refactoring.
 Some requirements caused us to regfactor from RBAC to ABAC, others requirements were so stressed we had to patch stuff, and some changes just complicated the code enough to be unreadable. 
 
-Fortunately, there is a movement in the access control world to make it a standalone microservice that all microservices, users, DBs has to go through to get access to a specific resource.
+Fortunately, there is a movement in the access-control world to make it a standalone microservice that all microservices, users, DBs has to go through to get access to a specific resource.
 
 This movement created great open-source projects that solve this specific problem.
 
 ## OPA - Open Policy agent 
 
 OPA which stands for Open Policy Agent, is a standalone microservice that decouples code from policy. 
-It is an open source project with strong communty always keeping it up to date.
 
-OPA policy is written in Rego code (pronounced rey-go) and is very robust - it supports high-performance queries returning in 1 millisec from the one hand, and very complex policies from the other hand.
+You can learn more on OPA [here](https://www.permit.io/blog/introduction-to-opa).
+
+It is an open-source project CNCF graduated (alongside Kubernetes) and battle tested in companies like Netflix and Goldman Sachs.
+
+OPA policies are written in Rego code (pronounced rey-go) - a high-level declarative (Datalog - like).
+Rego supports writing high-performance queries returning in 1 millisec from the one hand, and very complex policies from the other hand.
 
 OPA is a step function when implementing access-control and already simpllifies our life.
 
 ## When OPA isn't enough?
 
-OPA was built for a specific case and to be deployed as part of your CI/CD.
-This means, that your policy changes are not reflected in real-time, and once your policy changes, you need to deploy.
+#### Real-time updates
 
-Moreover, if part of your policy relies on data coming from 3rd party vendors and can update in real-time, OPA can't support that.
+OPA was built for Kubernetes and expects updates to be pushed through the CI/CD pipeline.
+Therefore, policies that require real-time data for decision-making are hard to implement.
+
 In example, let's say your policy limits the access to the staging environment to the office IP.
 Every time the user's IP changes, you need to update the user's permissions to update access to staging environment.
 
+#### Multiple data sources for policymaking
+
+If your policy requires multiple data sources for policymaking requires, you will have to implement bundling, AKA zipping the new data and uploading the data to OPA.
+
+Working like that when data changes constantly can be complex and not the best practice.
+
 ## OPAL.ac - Making OPA updated in real-time
 
-OPAL was built to add a real-time layer to your agent.
+OPAL was built to offer a solution when OPA might not be enough.
 
-It is an administration layer for Open Policy Agent (OPA), detecting changes in realtime to both policy and policy data and pushing live updates to your agents. 
+OPAL adds a real-time layer to OPA - it manages OPA agent, and keeps it up to date in real time with policy and data updates.
 
-OPAL is built to be fast, scalable, and extendable so it will be the last access control you will have to implement.
+OPAL is built to be scalable and extendable so it will be the last access control you will have to implement.
 
-## Get Started
+## Why use OPAL?
+OPAL is the easiest way to keep your solution's authorization layer up-to-date in realtime. It aggregates policy and data from across the field and integrates them seamlessly into the authorization layer, and is microservices and cloud-native.
 
-- Integrate permissions into your app
-- Edit the policy in the policy editor
+## OPA + OPAL = 💜
+While OPA (Open Policy Agent) decouples policy from code in a highly-performant and elegant way, the challenge of keeping policy agents up-to-date remains. This is especially true in applications, where each user interaction or API call may affect access-control decisions. OPAL runs in the background, supercharging policy-agents, keeping them in sync with events in realtime.
+
 
 ## OPAL.ac Support and Help
 
