@@ -1,5 +1,5 @@
-# Permit.io Docs Website
-This repository contains the source code to our docs site at [docs.permit.io](https://docs.permit.io).
+# OPAL Docs site
+This repository contains the source code to our docs site at [docs.opal.ac](https://docs.opal.ac).
 
 ### Writing docs
 * Docs are located in the `docs/` folder
