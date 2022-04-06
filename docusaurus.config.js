@@ -4,12 +4,6 @@
 const lightCodeTheme = require("./src/css/prism-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const companyWebsiteUrl =
-  process.env.COMPANY_WEBSITE_URL ?? "https://permit.io";
-
-const apiReferenceUrl =
-  process.env.API_REFERENCE_URL ?? "https://api.permit.io/redoc";
-
 const algoliaAppId = process.env.APPLICATION_ID || "";
 const algoliaApiKey = process.env.API_KEY || "";
 
@@ -26,15 +20,15 @@ if (algoliaAppId && algoliaApiKey) {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Permit.io",
+  title: "OPAL.ac",
   tagline: "Fullstack Authorization",
-  url: "https://docs.permit.io",
+  url: "https://docs.opal.ac",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-black.png",
   organizationName: "permitio", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
+  projectName: "opal", // Usually your repo name.
 
   presets: [
     [
@@ -73,22 +67,23 @@ const config = {
             label: "Docs",
           },
           {
-            to: `${apiReferenceUrl}`,
-            label: "API Reference",
-            position: "left",
-            target: "_self",
-          },
-          {
             type: "doc",
-            docId: "changelog",
+            docId: "home",
             position: "left",
-            label: "Changelog",
+            href: "https://opal.ac",
+            label: "Home",
           },
           {
             href: "https://github.com/permitio",
             position: "right",
             className: "header-github-link",
             "aria-label": "Github",
+          },
+          {
+            href: "https://twitter.com/opal_ac",
+            position: "right",
+            className: "header-twitter-link",
+            "aria-label": "Twitter",
           },
           {
             href: "https://bit.ly/opal-slack",
