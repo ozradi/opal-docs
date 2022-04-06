@@ -10,11 +10,6 @@ We built an example configuration that you can run in **docker compose**. The ex
 
 You can get a running OPAL environment by running one `docker-compose` command.
 
-## Table of Contents
-
-1. [Run the docker-compose playground and interact with OPAL](#docker-compose-example)
-2. [Understand the docker compose example configuration](#compose-recap)
-
 ## <a name="docker-compose-example"></a> Run the docker-compose playground and interact with OPAL
 
 In this section we show how to run OPAL with an example `docker-compose.yml` file. With a few quick commands you can have OPAL up-and-running on your machine and explore the core features. The example configuration is not suitable for production environments (due to the lack of security configuration), but it will help you to understand **why you need OPAL**.
@@ -105,9 +100,9 @@ The expected result is `true`, meaning the access is granted:
 {"result":true}
 ```
 
-### Step 3: Change the policy, and see it being updated in realtime
+### Step 3: Change the policy, and see it being updated in real-time
 
-Due to the fact the example `docker-compose.yml` makes OPAL track [this repository](https://github.com/permitio/opal-example-policy-repo) which regretfully you can not edit yourself, you can follow along this video to see how a git commit can affect the policy in realtime:
+Due to the fact the example `docker-compose.yml` makes OPAL track [this repository](https://github.com/permitio/opal-example-policy-repo) which regretfully you can not edit yourself, you can follow along this video to see how a git commit can affect the policy in real-time:
 
 ```
 TBD: video
@@ -144,7 +139,7 @@ A user is granted access if:
 - One of his/her role has a permission for the requested `action` and `resource type`.
 - Only users from the USA can access the resource (location == `US`).
 
-The reason we added the location policy is we want to show you how **pushing an update** via opal with a different "user location" can **immediately affect access**, demonstrating realtime updates needed by most modern applications.
+The reason we added the location policy is we want to show you how **pushing an update** via opal with a different "user location" can **immediately affect access**, demonstrating real-time updates needed by most modern applications.
 
 Remember this authorization query?
 
@@ -219,9 +214,9 @@ Let's review what they are and their main functions:
 
 #### (2) OPAL Server
 
-- **Policy-code realtime updates**
+- **Policy-code real-time updates**
   - Tracks a git repository (in our case - [this repository](https://github.com/permitio/opal-example-policy-repo)) and feeds the policy code (`.rego` files) and static data files (`data.json` files) to OPA as policy.
-  - If new commits will be pushed to this repository that affect rego or data files, the updated policy will be pushed to OPA automatically in realtime by OPAL.
+  - If new commits will be pushed to this repository that affect rego or data files, the updated policy will be pushed to OPA automatically in real-time by OPAL.
   - The `docker-compose.yml` file declares a polling interval to check if new commits are pushed to the repo. In production we recommend you setup a git webhook from your repo to OPAL server. The only reason we are using polling here is because we want the example `docker-compose.yml` file to work for you as well, and webhooks can only hit a public internet address (but during development you can use something like [ngrok](https://ngrok.com/)).
 - **Policy-data basic configuration**
   - The OPAL server serves the **base data source configuration** for OPAL client. The configuration is structured as **directives** for the client, each directive specifies **what to fetch** (url), and **where to put it** in OPA data document hierarchy (destination path).
@@ -229,9 +224,9 @@ Let's review what they are and their main functions:
   - The data sources specified in the server configuration must always return a complete and up-to-date picture.
   - In our example `docker-compose.yml` file, the server is configured to return these data sources directives to the client:
     - Fetch the `/policy-data` route on the OPAL Server (returns: `{}`) and assign it to the root data document on OPA (i.e: `/`).
-- **Policy-data realtime updates**
-  - The server can push realtime data updates to the client, it offers a REST API that allows you to push an updates via the server via pub/sub to your OPAL clients (and by extension OPA).
-  - We have a guide for that: [how to trigger realtime data updates using OPAL](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md).
+- **Policy-data real-time updates**
+  - The server can push real-time data updates to the client, it offers a REST API that allows you to push an updates via the server via pub/sub to your OPAL clients (and by extension OPA).
+  - We have a guide for that: [how to trigger real-time data updates using OPAL](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md).
   - Example why you need live updates:
     - Alice just invited Bob to a google drive document.
     - Bob expects to be able to view the document immediately.
@@ -254,4 +249,4 @@ If you skipped here from step 1, you can now [come back to the hands-on tutorial
 
 ## <a name="troubleshooting"></a> Troubleshooting
 
-You should troubleshoot the same way as shown in the [getting started with containers tutorial](https://github.com/permitio/opal/blob/master/docs/howto/get_started_with_opal_using_docker.md#troubleshooting).
+You should troubleshoot the same way as shown in the [getting started with containers tutorial](get-started-opal-docker-containers)

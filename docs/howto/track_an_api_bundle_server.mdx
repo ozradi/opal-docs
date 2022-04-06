@@ -102,9 +102,9 @@ The expected result is `true`, meaning the access is granted:
 {"result":true}
 ```
 
-### Step 3: Change the policy, and see it being updated in realtime
+### Step 3: Change the policy, and see it being updated in real-time
 
-Since the example `docker-compose-api-policy-source-example.yml` makes OPAL track the API bundle server (which serves the files from `/docker/docker_files/bundle files`). In order to see how a bundle update can affect the policy in realtime, we can run the following commands to trigger a policy update:
+Since the example `docker-compose-api-policy-source-example.yml` makes OPAL track the API bundle server (which serves the files from `/docker/docker_files/bundle files`). In order to see how a bundle update can affect the policy in real-time, we can run the following commands to trigger a policy update:
 
 ```bash
 cd docker/docker_files/bundle_files
@@ -122,7 +122,7 @@ A user is granted access if:
 - One of his/her role has a permission for the requested `action` and `resource type`.
 - Only users from the USA can access the resource (location == `US`).
 
-The reason we added the location policy is we want to show you how **pushing an update** via opal with a different "user location" can **immediately affect access**, demonstrating realtime updates needed by most modern applications.
+The reason we added the location policy is we want to show you how **pushing an update** via OPAL with a different "user location" can **immediately affect access**, demonstrating real-time updates needed by most modern applications.
 
 Remember this authorization query?
 
