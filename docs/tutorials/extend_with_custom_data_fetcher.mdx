@@ -22,7 +22,7 @@ This tutorial is long and detailed, but the gist of it is:
 
 ## <a name="background"></a>Background
 
-One of the core features of OPAL (besides realtime syncing of authorization state) is the ability to **aggregate state** from multiple data sources into OPA.
+One of the core features of OPAL (besides real-time syncing of authorization state) is the ability to **aggregate state** from multiple data sources into OPA.
 
 ### Use cases for fetching authorization state from external sources
 1) We might want to allow certain actions only for paying users. In order to know if the user is a paying user, the authorization layer needs to fetch billing data from a 3rd party service (i.e: **Stripe**).
@@ -378,7 +378,7 @@ The list in our case includes the built-in providers (`opal_common.fetcher.provi
 
 Fetchers are triggered when OPAL client is instructed to fetch **Data Source Entries**. Each entry is a directive what data to fetch, from where, how it should be fetched and how it should be saved into the policy store (i.e: OPA).
 
-Your [DataSourceEntry](https://github.com/permitio/opal/blob/master/opal_common/schemas/data.py#L9) objects can be used either in `OPAL_DATA_CONFIG_SOURCES` as initial data sources fetched when OPAL client first loads, or in dynamic (realtime) updates sent via the [OPAL publish API](http://localhost:7002/docs#/Data%20Updates/publish_data_update_event_data_config_post). There's a guide on hwo to trigger data updates [here](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md).
+Your [DataSourceEntry](https://github.com/permitio/opal/blob/master/opal_common/schemas/data.py#L9) objects can be used either in `OPAL_DATA_CONFIG_SOURCES` as initial data sources fetched when OPAL client first loads, or in dynamic (real-time) updates sent via the [OPAL publish API](http://localhost:7002/docs#/Data%20Updates/publish_data_update_event_data_config_post). There's a guide on hwo to trigger data updates [here](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md).
 
 Each DataSourceEntry object has a `config` attribute which is a dict that matches the schema of `FetcherConfig`.
 
