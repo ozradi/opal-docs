@@ -4,6 +4,13 @@
 const lightCodeTheme = require("./src/css/prism-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+const companyWebsiteUrl =
+  process.env.COMPANY_WEBSITE_URL ?? "https://permit.io";
+
+const apiReferenceUrl =
+  process.env.API_REFERENCE_URL ?? "https://api.permit.io/redoc";
+
+
 const algoliaAppId = process.env.APPLICATION_ID || "";
 const algoliaApiKey = process.env.API_KEY || "";
 
@@ -28,7 +35,7 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-black.png",
   organizationName: "permitio", // Usually your GitHub org/user name.
-  projectName: "opal", // Usually your repo name.
+  projectName: "docs", // Usually your repo name.
 
   presets: [
     [
