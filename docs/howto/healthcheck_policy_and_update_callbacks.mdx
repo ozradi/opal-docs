@@ -93,7 +93,8 @@ You'll get something like this as output:
 #### Advanced: How does the healthcheck feature work?
 Please note: you don't need to understand this section to use the healthcheck policy. It goes into internal implementation of the feature, to the benefit of the interested reader.
 
-OPAL has an internal OpaClient class (code [here](https://github.com/permitio/opal/blob/master/opal_client/policy_store/opa_client.py#L140)) that is used to communicate with the OPA agent via its [REST API](https://www.openpolicyagent.org/docs/latest/rest-api/). The `OpaClient` class holds a `OpaTransactionLogState` object (code [here](https://github.com/permitio/opal/blob/master/opal_client/policy_store/opa_client.py#L58)) that represents (a **very** simplified version of) the state of synchronization between OPAL client and OPA.
+OPAL has an internal OpaClient class (code [here](https://github.com/permitio/opal/blob/master/packages/opal-client/opal_client/policy_store/opa_client.py#L140)) that is used to communicate with the OPA agent via its [REST API](https://www.openpolicyagent.org/docs/latest/rest-api/). 
+The `OpaClient` class holds a `OpaTransactionLogState` object (code [here](https://github.com/permitio/opal/blob/master/packages/opal-client/opal_client/policy_store/opa_client.py#L58)) that represents (a **very** simplified version of) the state of synchronization between OPAL client and OPA.
 
 A transaction is initialized in the code using context managers:
 ```python
@@ -102,12 +103,12 @@ async with policy_store.transaction_context(update.id) as store_transaction:
   await store_transaction.set_policy_data(policy_data, path=policy_store_path)
 ```
 
-Every time a transaction [is ended](https://github.com/permitio/opal/blob/master/opal_client/policy_store/base_policy_store_client.py#L116) it is saved into OPA, by rendering the state of `OpaTransactionLogState` using the [healthcheck policy template](https://github.com/permitio/opal/blob/master/opal_client/opa/healthcheck/opal.rego).
+Every time a transaction [is ended](https://github.com/permitio/opal/blob/master/packages/opal-client/opal_client/policy_store/base_policy_store_client.py#L116) it is saved into OPA, by rendering the state of `OpaTransactionLogState` using the [healthcheck policy template](https://github.com/permitio/opal/blob/master/opal_client/opa/healthcheck/opal.rego).
 
 ## <a name="callbacks"></a> Data update callbacks
 
 #### What is the update callback feature?
-This feature, if activated, will trigger a callback (HTTP call to a configurable url) after every successful [data update](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md). It allows you to track which data updates completed successfully and were correctly saved to OPA cache.
+This feature, if activated, will trigger a callback (HTTP call to a configurable url) after every successful [data update](/howto/trigger_data_updates). It allows you to track which data updates completed successfully and were correctly saved to OPA cache.
 
 #### When should I use update callbacks?
 If you are using OPAL to sync your policy agents, you typically have a service (let's call it the **update source** service) that pushes updates via OPAL server, and OPAL server propagates this update to your fleet of agents.
@@ -178,7 +179,7 @@ uvicorn.protocols.http.httptools_impl   | INFO  | 172.27.0.4:49720 - "POST /data
 ```
 
 #### Setting up a one-time callback in the update message
-When [triggering an update](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md) using the OPAL server REST API, you can pass a callback definition inside the update message, like this:
+When [triggering an update](/howto/trigger_data_updates) using the OPAL server REST API, you can pass a callback definition inside the update message, like this:
 
 Assuming your opal server is deployed at `http://my-opal-server.com:7002`, you will send a POST request to the `/data/config` route:
 

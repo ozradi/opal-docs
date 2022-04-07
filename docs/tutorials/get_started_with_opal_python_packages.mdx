@@ -38,7 +38,7 @@ This guide will teach you how to setup and use OPAL as Python packages (python 3
 Getting Started with OPAL is easy - we'll install our OPAL-server to manage all the OPAL-client's we deploy.
 We'll deploy OPAL-clients (along side policy agents).
 
-This HOW-TO focuses on setting-up OPAL with its packages and CLI interface, this guide is better to understand the main configurations of OPAL. There's also a separate guide for [setting-up OPAL from pre-built docker images](https://github.com/permitio/opal/blob/master/docs/howto/get_started_with_opal_using_docker.md).
+This HOW-TO focuses on setting-up OPAL with its packages and CLI interface, this guide is better to understand the main configurations of OPAL. There's also a separate guide for [setting-up OPAL from pre-built docker images](get-started-opal-docker-containers).
 
 ### Notes
 - Make sure your system is running Python 3.7 or higher.
@@ -57,16 +57,16 @@ For example, `OPAL_SERVER_PORT=1337 opal-server run` is equivalent to `opal-serv
 ## Setup OPAL-server
 
 ### 1. Install OPAL-server using pip
-    ```sh
-    pip install opal-server
-    ```
-    - Once installed your shell will have access to the `opal-server` command.
+```sh
+pip install opal-server
+```
+- Once installed your shell will have access to the `opal-server` command.
 
-        <p><a href="https://asciinema.org/a/XyDg1ot2Q6UOsWOkiSxGVSJmx?t=1" target="_blank"><img src="https://asciinema.org/a/XyDg1ot2Q6UOsWOkiSxGVSJmx.svg"/></a>
-        </p>
-    - If the command isn't available try deactivating/activating the virtual-env.
-    - Run `opal-server --help` to see all the options and commands.
-    - Run the `opal-server print-config` to see all the possible configuration keys and their values (as read from defaults, evn-vars, .env, .ini, and the command-line).
+<a href="https://asciinema.org/a/XyDg1ot2Q6UOsWOkiSxGVSJmx?t=1" target="_blank"><img src="https://asciinema.org/a/XyDg1ot2Q6UOsWOkiSxGVSJmx.svg"/></a>
+
+- If the command isn't available try deactivating/activating the virtual-env.
+- Run `opal-server --help` to see all the options and commands.
+- Run the `opal-server print-config` to see all the possible configuration keys and their values (as read from defaults, evn-vars, .env, .ini, and the command-line).
 
 
 ### 2. Run opal-server
@@ -98,7 +98,7 @@ OPAL_POLICY_REPO_URL=https://github.com/permitio/opal-example-policy-repo.git  o
 
 ### Simple run with Data source configuration
 In addition to policy updates (as seen in above section) the OPAL-server can also facilitate data updates, directing OPAL-clients to fetch the needed data from various sources.
-see [how to trigger data updates guide](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md)
+see [how to trigger data updates guide](../howto/trigger_data_updates)
 CLI example:
 <p><a href="https://asciinema.org/a/JYBzx1VrqJ17QnvmOnDYylOE6?t=1" target="_blank"><img src="https://asciinema.org/a/JYBzx1VrqJ17QnvmOnDYylOE6.svg"/></a></p>
 

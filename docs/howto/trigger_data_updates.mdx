@@ -8,7 +8,7 @@ OPAL allows for other components to notify it (and through it all the OPAL clien
 ## What is this good for?
 Let's try an example - say your application has a billing service, and you want to allow access only to users who have billing enabled (enforced via a policy agent).
 You now need changes to the state of the billing service to be propagated to each of the enforcement points/agents (and preferably instantly [Users who've paid - don't like to wait 😅 ]). 
-With the OPAL's data-update-triggers feature the billing-service, another service monitoring it, or even a person can trigger updates as they need - knowing OPAL will take it from there to all the points that need it.
+With the OPAL's vdata-update-triggers feature the billing-service, another service monitoring it, or even a person can trigger updates as they need - knowing OPAL will take it from there to all the points that need it.
 
 ### <a name="datasource-token"></a>First, you need to obtain a data-source identity token (JWT)
 
@@ -54,7 +54,9 @@ Example:
 (Yes... We did... We put authorization in your authorization 😜 &nbsp;😅 )
 
 See this recording showing the command including getting the JWT for the server with the `obtain-token` command.
-(https://asciinema.org/a/JYBzx1VrqJ17QnvmOnDYylOE6.svg)[https://asciinema.org/a/JYBzx1VrqJ17QnvmOnDYylOE6?t=1]
+<a href="https://asciinema.org/a/JYBzx1VrqJ17QnvmOnDYylOE6?t=1">
+  <img src="https://asciinema.org/a/JYBzx1VrqJ17QnvmOnDYylOE6.svg"/>
+</a>
 
 ### Option 2: Trigger a data update with OPAL Server REST API
 All the APIs in opal are OpenAPI / Swagger based (via FastAPI).
@@ -63,4 +65,4 @@ You can also [generate an API-client](https://github.com/OpenAPITools/openapi-ge
 
 ### Option 3: Write your own - import code from the OPAL's packages
 One of the great things about OPAL being written in Python is that you can easily reuse its code.
-See the code for the `DataUpdate` model at [opal_common/schemas/data.py](https://github.com/permitio/opal/blob/master/opal_common/schemas/data.py) and use it within your own code to send an update to the server
+See the code for the `DataUpdate` model at [opal_common/schemas/data.py](https://github.com/permitio/opal/blob/master/packages/opal-common/opal_common/schemas/data.py) and use it within your own code to send an update to the server

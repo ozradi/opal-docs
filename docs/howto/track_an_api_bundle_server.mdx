@@ -29,7 +29,7 @@ Currently OPAL server supports two ways to detect changes in the tracked repo / 
 
 - **Webhook** - By issuing an HTTP REST request to OPAL server `<opal-server-url>/webhook` with your auth access token upon each update bundle file event, you can trigger the OPAL server to fetch a new bundle.
 
-The rest of the policy syncing process is the same as with a [git policy source](https://github.com/permitio/opal/blob/master/docs/howto/track_a_git_repo.md).
+The rest of the policy syncing process is the same as with a [git policy source](track_a_git_repo).
 
 ## <a name="compose-example"></a>Docker compose example
 
@@ -44,7 +44,7 @@ cd opal
 docker-compose -f docker/docker-compose-api-policy-source-example.yml up
 ```
 
-The `docker-compose.yml` we just downloaded ([Click here to view its contents](https://github.com/permitio/opal/blob/master/docker/docker-compose-api-policy-source-example.yml)) is running 4 containers: Broadcast, OPAL Server, OPAL Client, and API bundle server.
+The `docker-compose.yml` we just downloaded ([click here to view its contents](https://github.com/permitio/opal/blob/master/docker/docker-compose-api-policy-source-example.yml)) is running 4 containers: Broadcast, OPAL Server, OPAL Client, and API bundle server.
 
 OPAL (and also OPA) are now running on your machine, the following ports are exposed on `localhost`:
 
@@ -108,7 +108,8 @@ Since the example `docker-compose-api-policy-source-example.yml` makes OPAL trac
 
 ```bash
 cd docker/docker_files/bundle_files
-mv bundle.tar.gz{,.bak1}; mv bundle.tar.gz{.bak,}; mv bundle.tar.gz.bak{1,} # this command swaps the two bundle files you have, to trigger a policy change
+mv bundle.tar.gz{,.bak1}; mv bundle.tar.gz{.bak,}; mv bundle.tar.gz.bak{1,} 
+# this command swaps the two bundle files you have, to trigger a policy change
 ```
 
 - You can now run the same query as before (the curl command above) to see that the user's data has changed

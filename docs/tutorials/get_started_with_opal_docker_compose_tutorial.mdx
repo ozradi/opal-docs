@@ -14,7 +14,7 @@ You can get a running OPAL environment by running one `docker-compose` command.
 
 In this section we show how to run OPAL with an example `docker-compose.yml` file. With a few quick commands you can have OPAL up-and-running on your machine and explore the core features. The example configuration is not suitable for production environments (due to the lack of security configuration), but it will help you to understand **why you need OPAL**.
 
-Alternatively, check out this [tutorial if you'd prefer to run OPAL with an API Bundle server](https://github.com/permitio/opal/blob/master/docs/howto/get_started_with_opal_api_source_docker_compose_tutorial.md) as its policy source.
+Alternatively, [check out](https://github.com/permitio/opal/blob/master/docs/howto/get_started_with_opal_api_source_docker_compose_tutorial.md) this tutorial if you'd prefer to run OPAL with an API Bundle server as its policy source.
 
 This entire tutorial is also recorded here:
 
@@ -128,7 +128,7 @@ services:
 
 You can then issue a commit affecting the policy and see that OPA state is indeed changing.
 
-For more info, check out this tutorial: [How to track a git repo](https://github.com/permitio/opal/blob/master/docs/howto/track_a_git_repo.md).
+For more info, check out this tutorial: [How to track a git repo](/howto/track_a_git_repo).
 
 ### Step 4: Publish a data update via the OPAL Server
 
@@ -226,7 +226,7 @@ Let's review what they are and their main functions:
     - Fetch the `/policy-data` route on the OPAL Server (returns: `{}`) and assign it to the root data document on OPA (i.e: `/`).
 - **Policy-data real-time updates**
   - The server can push real-time data updates to the client, it offers a REST API that allows you to push an updates via the server via pub/sub to your OPAL clients (and by extension OPA).
-  - We have a guide for that: [how to trigger real-time data updates using OPAL](https://github.com/permitio/opal/blob/master/docs/howto/trigger_data_updates.md).
+  - We have a guide for that: [how to trigger real-time data updates using OPAL](/howto/trigger_data_updates).
   - Example why you need live updates:
     - Alice just invited Bob to a google drive document.
     - Bob expects to be able to view the document immediately.
